@@ -9,48 +9,46 @@ Assessment Requirements
 */
 
 // create a variable to hold your NFT's
-const NFTs =[]
+var nftCollection = [];
 // this function will take in some values as parameters, create an
 // NFT object using the parameters passed to it for its metadata, 
 // and store it in the variable above.
-function mintNFT (_name,_eyeColor,_shirtType,_bling) {
-    const NFT = {
-        "name": _name,
-        "eyeColor": _eyeColor,
-        "shirtType": _shirtType,
-        "bling": _bling
-
-    }
-    NFTs.push(NFT);
-    console.log("Minted: " + _name);
+function mintNFT(title, artist, year, medium) {
+    // Create an NFT object with the provided metadata
+    var nft = {
+        title: title,
+        artist: artist,
+        year: year,
+        medium: medium,
+        
+    };
+    nftCollection.push(nft);
 
 }
 
 // create a "loop" that will go through an "array" of NFT's
 // and print their metadata with console.log()
-function listNFTs () {
-    for(let i = 0; i < NFTs.length;i++){
-       // console.log(NFTs[i]);
-       console.log("\n ID: \t\t " + (i+1));
-       console.log("Name:\t\t " + NFTs[i].name);
-       console.log("Eye Color:\t " + NFTs[i].eyeColor);
-       console.log("Shirt Type: " + NFTs[i].shirtType);
-       console.log("Bling:\t\t " + NFTs[i].bling);
-        
+function listNFTs() {
+    for (var i = 0; i < nftCollection.length; i++) {
+        var nft = nftCollection[i];
+        console.log('NFT ' + (i + 1) + ':');
+        console.log('  Title: ' + nft.title);
+        console.log('  Artist: ' + nft.artist);
+        console.log('  Year: ' + nft.year);
+        console.log('  Medium: ' + nft.medium);
+        console.log('---------------------');
     }
-
 }
 
 // print the total number of NFTs we have minted to the console
 function getTotalSupply() {
-    console.log("\n" + NFTs.length);
-
+    return nftCollection.length;
 }
 
 // call your functions below this line
-mintNFT("Bob", "Blue", "Hoodie", "Gold Chain");
-mintNFT("Sue", "Blue", "Hoodie", "Gold Chain");
-mintNFT("John", "Blue", "Hoodie", "Gold Chain");
-mintNFT("Tim", "Blue", "Hoodie", "Gold Chain");
+mintNFT('Starry Night', 'Vincent van Gogh', 1889, 'Oil on canvas' );
+mintNFT('The Persistence of Memory', 'Salvador Dalí', 1931, 'Oil on canvas' );
+
 listNFTs();
-getTotalSupply();
+console.log('Total Supply: ' + getTotalSupply());
+
